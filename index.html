@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de privacidad · Cleanphone Guardian · Privacy policy</title>
+<meta name="description" content="Política de privacidad de Cleanphone Guardian (ES/EN). Sin cookies, sin analítica, sin recursos externos.">
+<style>
+:root{color-scheme:light dark}
+body{margin:0;background:#ffffff;color:#101418;font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:52rem;margin:0 auto;padding:2.2rem 1.15rem 4rem}
+h1{font-size:1.65rem;line-height:1.25;margin:.2rem 0 1.1rem}
+h2{font-size:1.18rem;margin:2.1rem 0 .55rem;border-bottom:1px solid #d8dde3;padding-bottom:.3rem}
+h3{font-size:1.02rem;margin:1.35rem 0 .35rem}
+p,li{margin:.5rem 0}
+ul{padding-left:1.25rem}
+code{background:#f1f3f6;padding:.08rem .32rem;border-radius:3px;font-size:.9em}
+table{border-collapse:collapse;width:100%;margin:.7rem 0}
+th,td{border:1px solid #d8dde3;text-align:left;padding:.42rem .55rem;vertical-align:top;font-size:.95rem}
+th{background:#f5f7fa}
+.marcador{background:#fff3b0;border:1px dashed #b58900;padding:.06rem .32rem;border-radius:3px;font-weight:600}
+.nota{background:#f5f7fa;border-left:4px solid #8a94a0;padding:.7rem .9rem;margin:1rem 0}
+.en{margin-top:3.4rem;border-top:2px solid #101418;padding-top:1.3rem}
+footer{margin-top:3rem;font-size:.86rem;color:#5b636d}
+@media (prefers-color-scheme:dark){
+body{background:#101418;color:#e8ecf1}
+h2{border-bottom-color:#333b44}
+code{background:#1c2229}
+th,td{border-color:#333b44}
+th{background:#1a2027}
+.marcador{background:#4a3c00;border-color:#c9a227;color:#ffe58a}
+.nota{background:#1a2027;border-left-color:#7a8697}
+footer{color:#9aa3ad}
+}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Política de privacidad de Cleanphone Guardian</h1>
+
+<p><strong>Vigente desde:</strong> <span class="marcador">FECHA DE VIGENCIA — PENDIENTE DE COMPLETAR POR EL RESPONSABLE (p. ej. 2026-11-01)</span></p>
+<p><strong>Responsable y contacto:</strong> <span class="marcador">CORREO DE CONTACTO — PENDIENTE DE COMPLETAR POR EL RESPONSABLE</span></p>
+
+<div class="nota">
+<p><strong>Aviso de contenido.</strong> Cleanphone Guardian es una aplicación de <em>control parental</em> que
+filtra el DNS del propio teléfono. El adulto (el «tutor») la instala en el dispositivo que supervisa. La
+aplicación <strong>no es un antivirus</strong>, <strong>no cifra la navegación</strong> y <strong>no sustituye
+al diálogo familiar</strong>.</p>
+</div>
+
+<h2>1. Quién trata los datos</h2>
+<p>El responsable del tratamiento es la persona o entidad que figura en el correo de contacto indicado
+arriba. Esta política describe <strong>únicamente</strong> lo que hace la aplicación, tal como está
+construida y medida hoy.</p>
+
+<h2>2. Qué datos salen del dispositivo</h2>
+<ul>
+<li><strong>Ninguno hacia el responsable.</strong> La aplicación <strong>no</strong> tiene servidor propio,
+ni cuenta, ni analítica, ni publicidad, ni informes de fallos de terceros.</li>
+<li>La aplicación <strong>sí</strong> genera tráfico hacia <strong>resolvers DNS públicos con filtro</strong>
+(CleanBrowsing, AdGuard y Cloudflare, en ese orden de preferencia) porque <strong>eso es su función</strong>:
+cada consulta DNS del teléfono se resuelve por <strong>DNS sobre TLS (puerto 853)</strong> contra esos
+resolvers. Ese tráfico (el dominio consultado y la IP del dispositivo) es visible para el resolver que
+responde, igual que con cualquier proveedor de DNS. <strong>No</strong> pasa por el responsable ni por un
+servidor suyo.</li>
+<li>La aplicación <strong>no guarda el historial de consultas</strong> del teléfono y <strong>no registra ni
+envía la actividad de nadie</strong>: solo anota el funcionamiento de la propia protección (contadores
+agregados y eventos del túnel, sin contenido de las consultas).</li>
+</ul>
+
+<h2>3. Qué datos se guardan en el dispositivo</h2>
+<table>
+<tr><th>Dato</th><th>Forma en que se guarda</th><th>Para qué</th></tr>
+<tr><td>Credencial del tutor (PIN de 8 dígitos)</td><td><strong>Hash</strong> PBKDF2 con sal aleatoria por instalación. El PIN <strong>no</strong> se guarda.</td><td>Abrir la aplicación y cambiar el PIN</td></tr>
+<tr><td>Configuración</td><td>Nombre del dispositivo<sup>*</sup>, modo de filtro y estado del servicio</td><td>Funcionamiento del asistente y de la pantalla inicial</td></tr>
+<tr><td>Contadores agregados y eventos del túnel</td><td>Número y causa de intentos de resolución, sin contenido de las consultas</td><td>Diagnóstico del filtrado por el tutor</td></tr>
+<tr><td>Estado de bloqueo por intentos fallidos</td><td>Umbral, racha e instante de fin del bloqueo</td><td>Protección contra la fuerza bruta sobre el PIN</td></tr>
+</table>
+<p><sup>*</sup> El «nombre del dispositivo» es un texto que escribe el tutor para identificar su propia
+instalación (por ejemplo, «teléfono de Ana»). No se toma del sistema ni se envía a ningún sitio.</p>
+
+<h2>4. Cuánto duran y cómo se borran</h2>
+<ul>
+<li>Todo se guarda en el <strong>almacenamiento privado de la aplicación</strong> (base de datos local).</li>
+<li><strong>Desinstalar la aplicación borra todo.</strong> No hay cuentas ni copias en la nube que haya que
+borrar aparte.</li>
+<li>La aplicación desactiva las copias de seguridad del sistema (<code>android:allowBackup="false"</code>):
+sus datos <strong>no</strong> entran en las copias de Google, ni en la transferencia entre teléfonos, ni en
+<code>adb backup</code>.</li>
+<li>Los eventos del túnel se conservan un máximo de <strong>60 días</strong> en el propio dispositivo y se
+purgan automáticamente.</li>
+<li>El <strong>PIN no se puede recuperar</strong>: no existe ninguna puerta trasera. Si se pierde, la
+aplicación no ofrece recuperación de la credencial.</li>
+</ul>
+
+<h2>5. Niños, terceros y permisos</h2>
+<ul>
+<li>La aplicación la instala y configura un <strong>adulto</strong>. Está pensada <em>para el tutor</em>, no
+dirigida a niños como público: no recoge datos del menor, no usa cuentas infantiles y no tiene funciones
+sociales.</li>
+<li><strong>No se comparten datos con terceros</strong>: no hay terceros (sin analítica, sin publicidad, sin
+almacenamiento externo).</li>
+<li><strong>Permisos</strong> y su justificación: Internet y estado de red (resolver el filtro y reaccionar a
+cambios de red) · servicio en primer plano y notificaciones (avisar al tutor de que la protección está
+activa o ha caído) · inicio tras reinicio (volver a levantar la protección) · exclusión de la optimización
+de batería (que el sistema no cierre el filtro).</li>
+<li><strong>VPN (VpnService)</strong>: Android no permite filtrar el DNS sin una VPN. La aplicación crea una
+VPN <strong>local</strong> que captura <strong>solo</strong> las consultas DNS del propio teléfono. No
+redirige la navegación, no la inspecciona y no tuneliza el tráfico hacia terceros.</li>
+</ul>
+
+<h2>6. Cambios en esta política</h2>
+<p>Si esta política cambia, se publicará en la misma dirección con su nueva fecha de vigencia. El
+responsable indicado arriba es quien la mantiene y quien atiende cualquier consulta sobre ella.</p>
+
+<hr class="en">
+
+<h1 id="en">Cleanphone Guardian — Privacy policy</h1>
+
+<p><strong>Effective date:</strong> <span class="marcador">EFFECTIVE DATE — TO BE COMPLETED BY THE CONTROLLER (e.g. 2026-11-01)</span></p>
+<p><strong>Controller and contact:</strong> <span class="marcador">CONTACT EMAIL — TO BE COMPLETED BY THE CONTROLLER</span></p>
+
+<div class="nota">
+<p><strong>What this app is.</strong> Cleanphone Guardian is a <em>parental control</em> app that filters the
+phone's own DNS. The adult (the “guardian”) installs it on the device being supervised. It is <strong>not an
+antivirus</strong>, it does <strong>not</strong> encrypt browsing, and it is <strong>not</strong> a substitute
+for talking with your family.</p>
+</div>
+
+<h2>1. Who processes the data</h2>
+<p>The controller is the person or entity named in the contact email above. This policy describes
+<strong>only</strong> what the application does as it is built and measured today.</p>
+
+<h2>2. What leaves the device</h2>
+<ul>
+<li><strong>Nothing goes to the controller.</strong> The app has <strong>no</strong> server of its own, no
+account, no analytics, no advertising and no third-party crash reporting.</li>
+<li>The app <strong>does</strong> generate traffic to <strong>public filtering DNS resolvers</strong>
+(CleanBrowsing, AdGuard and Cloudflare, in that order of preference) because <strong>that is its
+function</strong>: every DNS query on the phone is resolved over <strong>DNS-over-TLS (port 853)</strong>
+against those resolvers. That traffic (the queried domain and the device IP) is visible to the resolver that
+answers, exactly as with any DNS provider. It does <strong>not</strong> pass through the controller or any
+server of theirs.</li>
+<li>The app <strong>does not keep a query history</strong> and <strong>does not log or send anyone's
+activity</strong>: it only records how the protection itself is working (aggregate counters and tunnel
+events, with no query content).</li>
+</ul>
+
+<h2>3. What is stored on the device</h2>
+<table>
+<tr><th>Data</th><th>How it is stored</th><th>Why</th></tr>
+<tr><td>Guardian credential (8-digit PIN)</td><td><strong>PBKDF2 hash</strong> with a random per-installation salt. The PIN itself is <strong>not</strong> stored.</td><td>Opening the app and changing the PIN</td></tr>
+<tr><td>Settings</td><td>Device name<sup>*</sup>, filter mode and service state</td><td>Running the setup assistant and the home screen</td></tr>
+<tr><td>Aggregate counters and tunnel events</td><td>Count and cause of resolution attempts, with no query content</td><td>Letting the guardian diagnose filtering</td></tr>
+<tr><td>Failed-attempt lockout state</td><td>Threshold, streak and end time of the lockout</td><td>Brute-force protection for the PIN</td></tr>
+</table>
+<p><sup>*</sup> The “device name” is text the guardian types to identify their own installation (for example,
+“Ana's phone”). It is not read from the system and is never sent anywhere.</p>
+
+<h2>4. How long it lasts and how it is deleted</h2>
+<ul>
+<li>Everything is stored in the app's <strong>private storage</strong> (a local database).</li>
+<li><strong>Uninstalling the app deletes everything.</strong> There are no accounts and no cloud copies to
+delete separately.</li>
+<li>The app disables system backups (<code>android:allowBackup="false"</code>): its data does
+<strong>not</strong> go into Google backups, device-to-device transfer, or <code>adb backup</code>.</li>
+<li>Tunnel events are kept for at most <strong>60 days</strong> on the device itself and are purged
+automatically.</li>
+<li>The <strong>PIN cannot be recovered</strong>: there is no backdoor. If it is lost, the app offers no
+credential recovery.</li>
+</ul>
+
+<h2>5. Children, third parties and permissions</h2>
+<ul>
+<li>The app is installed and configured by an <strong>adult</strong>. It is intended <em>for the guardian</em>,
+not directed at children as an audience: it does not collect children's data, does not use child accounts and
+has no social features.</li>
+<li><strong>No data is shared with third parties</strong>: there are none (no analytics, no ads, no external
+storage).</li>
+<li><strong>Permissions</strong> and why: internet and network state (reaching the filter and reacting to
+network changes) · foreground service and notifications (telling the guardian that protection is on or has
+gone down) · start on boot (bringing protection back) · battery-optimisation exemption (so the system does not
+kill the filter).</li>
+<li><strong>VPN (VpnService)</strong>: Android does not allow DNS filtering without a VPN. The app creates a
+<strong>local</strong> VPN that captures <strong>only</strong> the phone's own DNS queries. It does not redirect
+browsing, does not inspect it and does not tunnel traffic to third parties.</li>
+</ul>
+
+<h2>6. Changes to this policy</h2>
+<p>If this policy changes, it will be published at the same address with a new effective date. The controller
+named above maintains it and answers any question about it.</p>
+
+<footer>
+<p>Esta página no usa cookies, analítica, fuentes ni scripts externos; es un documento estático.
+/ This page uses no cookies, analytics, external fonts or scripts; it is a static document.</p>
+</footer>
+
+</main>
+</body>
+</html>
