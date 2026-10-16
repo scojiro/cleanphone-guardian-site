@@ -216,7 +216,7 @@ y volver a instalarla</strong>, con lo que se pierde la configuración anterior 
 existe ninguna otra forma de recuperar el acceso.</p>
 </div>
 
-<h2>6. Protección avanzada del dispositivo (opcional)</h2>
+<h2>6. Protección avanzada del dispositivo (opcional, para usuarios con conocimientos técnicos)</h2>
 <p>Además del filtrado, la aplicación puede ocupar el <strong>rol de administrador del
 dispositivo</strong> de Android. Es una función <strong>opcional y avanzada</strong>, y este
 apartado explica exactamente qué implica para que se pueda decidir con conocimiento de causa.</p>
@@ -227,23 +227,29 @@ necesitan. Cleanphone Guardian puede ocuparlo, pero <strong>no lo ocupa por sí 
 en ningún momento sin que alguien lo decida.</p>
 
 <h3>Cómo se activa</h3>
-<p>Requiere un <strong>acto deliberado desde un ordenador</strong>, conectando el teléfono por
-cable o por red y usando las herramientas de desarrollo de Android (<em>ADB</em>). El comando
-necesario es:</p>
-<pre><code>adb shell dpm set-device-owner com.cleanphone.guardian/.DeviceAdminReceiver</code></pre>
-<p>Dentro de la aplicación <strong>no hay ningún botón que atribuya el rol a la app</strong>. Si el
-teléfono todavía no tiene un código de recuperación activado, la aplicación ni siquiera muestra
-este comando, porque sin ese código el tutor podría quedarse sin poder entrar después.</p>
+<p>Esta opción es para <strong>usuarios con conocimientos técnicos</strong>. En las versiones de
+Cleanphone que la incluyan, la aplicación ofrece las <strong>instrucciones</strong> para activar el
+permiso de administración del dispositivo, y esas instrucciones indican los requisitos.</p>
+<p>El requisito principal lo pone el propio Android: <strong>el teléfono debe configurarse desde cero,
+sin ninguna cuenta</strong>, o restablecerse de fábrica antes de activar el permiso; en algunos
+fabricantes el procedimiento choca además con sus propias reglas. No se promete que funcione en un
+teléfono ya configurado y con cuentas.</p>
+<p>Dentro de la aplicación <strong>no hay ningún botón que atribuya el rol a la app</strong>: el
+permiso no se activa desde la propia aplicación. Si el teléfono todavía no tiene un código de
+recuperación activado, la aplicación ni siquiera muestra esas instrucciones, porque sin ese código el
+tutor podría quedarse sin poder entrar después.</p>
 
-<h3>Qué políticas aplica</h3>
-<p>Una vez con el rol, el tutor puede activar por separado estas dos políticas desde la
-aplicación, siempre con su PIN:</p>
+<h3>Qué se aplica con el rol puesto</h3>
+<p>Una vez con el rol, el tutor puede activar desde la aplicación, siempre con su PIN:</p>
 <ul>
-  <li><strong>VPN siempre activada, sin bloqueo de conexiones.</strong> Hace que Android
-  reinicie automáticamente el filtro del DNS al encender el teléfono.</li>
-  <li><strong>Bloqueo de la desinstalación de la propia aplicación</strong> por el rol de
-  administrador.</li>
+  <li><strong>VPN siempre activada, sin bloqueo de conexiones.</strong> Hace que Android reinicie
+  automáticamente el filtro del DNS al encender el teléfono.</li>
 </ul>
+<p>Además, y como <strong>efecto del propio rol</strong> (no como una opción que la aplicación
+active): <strong>mientras el rol esté puesto, la desinstalación de la aplicación puede quedar
+bloqueada</strong>. En esta versión la aplicación <strong>no ofrece ningún botón</strong> para activar
+ni desactivar ese bloqueo; su pantalla de salida sí lo libera, e indica que el rol de administrador no
+se retira.</p>
 
 <h3>Qué NO hace</h3>
 <ul>
@@ -269,7 +275,7 @@ comprobar».</p>
 
 <h3>Cómo sale el tutor</h3>
 <ul>
-  <li><strong>El tutor puede retirar las políticas que aplicó</strong> desde la aplicación,
+  <li><strong>El tutor puede retirar desde la aplicación lo que quedó aplicado</strong>,
   introduciendo su PIN. La operación pide confirmación y avisa de que
   <strong>el rol de administrador no se retira</strong>. El resultado se informa política por
   política, y si alguna no se puede comprobar, la aplicación lo dice en lugar de suponerlo.</li>
@@ -516,7 +522,7 @@ install it again</strong>, which loses your previous filter settings. There is n
 back in.</p>
 </div>
 
-<h2>6. Advanced device protection (optional)</h2>
+<h2>6. Advanced device protection (optional, for users with technical knowledge)</h2>
 <p>Besides filtering, the app can take on Android's <strong>device administrator</strong> role. It is
 an <strong>optional and advanced</strong> feature, and this section explains exactly what it
 involves so you can decide with full knowledge.</p>
@@ -527,21 +533,29 @@ Guardian can take it on, but <strong>it never takes it on by itself</strong> and
 unless someone decides to.</p>
 
 <h3>How to turn it on</h3>
-<p>It takes a <strong>deliberate step from a computer</strong>, connecting the phone by cable or
-network and using the Android developer tools (<em>ADB</em>). The required command is:</p>
-<pre><code>adb shell dpm set-device-owner com.cleanphone.guardian/.DeviceAdminReceiver</code></pre>
-<p>Inside the app <strong>there is no button that assigns the role to the app</strong>. If the phone
-does not yet have a recovery code enabled, the app does not even show this command, because without
-that code the guardian could end up locked out.</p>
+<p>This option is for <strong>users with technical knowledge</strong>. In the versions of Cleanphone
+that include it, the app provides the <strong>instructions</strong> for turning on the device
+administration permission, and those instructions list the requirements.</p>
+<p>The main requirement comes from Android itself: <strong>the phone must be set up from scratch, with
+no accounts</strong>, or be factory reset before the permission is turned on; on some manufacturers
+the procedure also clashes with their own rules. It is not promised to work on a phone that is already
+set up and has accounts.</p>
+<p>Inside the app <strong>there is no button that assigns the role to the app</strong>: the permission
+is not turned on from the app itself. If the phone does not yet have a recovery code enabled, the app
+does not even show those instructions, because without that code the guardian could end up locked
+out.</p>
 
-<h3>Which policies it applies</h3>
-<p>Once the role is in place, the guardian can enable these two policies separately from the app,
-always with their PIN:</p>
+<h3>What is applied once the role is in place</h3>
+<p>Once the role is in place, the guardian can turn on the following from the app, always with their
+PIN:</p>
 <ul>
   <li><strong>Always-on VPN, with no connection blocking.</strong> It makes Android restart the DNS
   filter automatically when the phone is switched on.</li>
-  <li><strong>Blocking of the app's own uninstall</strong> through the administrator role.</li>
 </ul>
+<p>In addition, and as an <strong>effect of the role itself</strong> (not as an option the app turns
+on): <strong>while the role is in place, uninstalling the app may be blocked</strong>. In this version
+the app <strong>offers no button</strong> to turn that block on or off; its exit screen does release
+it, and states that the administrator role is not removed.</p>
 
 <h3>What it does NOT do</h3>
 <ul>
@@ -566,7 +580,7 @@ no policy as applied or removed. The same applies when applying or removing: the
 
 <h3>How the guardian gets out</h3>
 <ul>
-  <li><strong>The guardian can remove the policies they applied</strong> from the app by entering
+  <li><strong>The guardian can remove from the app whatever was left applied</strong> from the app by entering
   their PIN. The operation asks for confirmation and warns that <strong>the administrator role is
   not removed</strong>. The result is reported policy by policy, and if any of them cannot be
   checked, the app says so instead of assuming.</li>
