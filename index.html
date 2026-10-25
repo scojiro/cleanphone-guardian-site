@@ -89,6 +89,7 @@ footer{margin-top:3rem;padding-top:1.1rem;border-top:1px solid var(--borde);colo
 
 <div class="ficha">
 <p><strong>Vigente desde:</strong> 16 de octubre de 2026</p>
+<p><strong>Actualizada:</strong> 25 de octubre de 2026 — se declara el servicio de accesibilidad opcional («guardia de Ajustes»).</p>
 <p><strong>Responsable:</strong> scojiro_dev (desarrollador independiente)</p>
 <p><strong>Contacto de privacidad:</strong> <a href="mailto:scojiro+cleanphone@gmail.com">scojiro+cleanphone@gmail.com</a></p>
 </div>
@@ -101,7 +102,7 @@ footer{margin-top:3rem;padding-top:1.1rem;border-top:1px solid var(--borde);colo
 <li>Lo que la aplicación guarda <strong>se queda en el teléfono</strong> y desaparece al desinstalarla.</li>
 <li><strong>No se guarda qué páginas se han abierto</strong>: solo cuántos bloqueos hubo y por qué motivo.</li>
 <li>Existe un <strong>código de recuperación opcional</strong> para recuperar el PIN si lo pierdes. Se muestra una sola vez.</li>
-<li>La <strong>Protección avanzada del dispositivo</strong> es opcional y para usuarios con conocimientos técnicos: exige preparar el teléfono desde cero y <strong>no filtra más</strong>.</li>
+<li>La <strong>Protección avanzada del dispositivo</strong> es opcional y para usuarios con conocimientos técnicos: exige preparar el teléfono desde cero y <strong>no filtra más</strong>. Tiene dos capas opcionales: el rol de administrador y una <strong>guardia de Ajustes</strong> por accesibilidad que solo actúa en pantallas del sistema que afectan a esta aplicación.</li>
 </ul>
 </div>
 
@@ -292,6 +293,44 @@ comprobar».</p>
 acceso dentro de la aplicación; en ningún caso impide quitar la aplicación ni cambiar los ajustes
 de Android.</p>
 
+<h3>La guardia de Ajustes (servicio de accesibilidad, opcional)</h3>
+<p>La segunda capa opcional de esta protección es un <strong>servicio de accesibilidad</strong> de
+Android, que la aplicación llama «guardia de Ajustes». Se activa <strong>por separado</strong>, con
+su propio aviso, desde los ajustes de accesibilidad del teléfono, y se puede desactivar desde la
+aplicación con el PIN del tutor.</p>
+
+<h4>Qué recibe</h4>
+<p>Solo <strong>avisos de cambio de ventana</strong> (qué pantalla pasa a primer plano) y
+<strong>solo de una lista cerrada de aplicaciones del sistema</strong>: los Ajustes de Android, el
+gestor de aplicaciones de MIUI/Xiaomi, el instalador de paquetes y los lanzadores conocidos. El
+sistema <strong>no le entrega eventos de ninguna otra aplicación</strong>.</p>
+
+<h4>Qué lee</h4>
+<p>De esas pantallas, únicamente comprueba <strong>en memoria</strong> si mencionan el paquete
+<code>com.cleanphone.guardian</code> o el nombre «Cleanphone Guardian». <strong>No lee, no guarda y
+no envía el contenido</strong> de otras aplicaciones: no hay registro de texto, ni capturas de
+pantalla, ni historial de lo que se ve.</p>
+
+<h4>Qué hace</h4>
+<p>Cuando una de esas pantallas <strong>afecta a esta aplicación</strong> —desinstalarla, forzar su
+detención, borrar sus datos, desactivar su administrador, desactivar el propio servicio o quitar la
+VPN—, el servicio ejecuta la acción «atrás» para devolver al usuario a la pantalla anterior. Es lo
+que impide que la protección se desactive sin el PIN del tutor en esas rutas concretas.</p>
+
+<h4>Cuándo no actúa</h4>
+<p>La ficha de <strong>otra</strong> aplicación en esos mismos ajustes <strong>no se toca</strong>:
+la comprobación falla porque la pantalla no menciona Cleanphone y el servicio no hace nada. Tampoco
+actúa en ninguna pantalla fuera de esa lista.</p>
+
+<h4>Límites</h4>
+<p>No es infalible: el modo seguro, el restablecimiento de fábrica, la depuración USB desde un
+ordenador y otro usuario del dispositivo pueden saltarla. Por sí sola no impide desinstalar la
+aplicación y no sustituye al rol de administrador. Si detecta un bucle de cierres, <strong>se
+desactiva sola</strong> (modo a prueba de fallos) para no dejar el teléfono inutilizable, y la
+aplicación lo avisa.</p>
+<p>En Google Play, el uso de este servicio de accesibilidad se declara en la ficha de la aplicación
+y en el formulario de declaración correspondiente.</p>
+
 <h2>7. Copias de seguridad y cambio de teléfono</h2>
 <p>La aplicación declara las copias de seguridad del sistema <strong>desactivadas</strong> y, para
 los sistemas más recientes, define además unas <strong>reglas de exclusión explícitas</strong> que
@@ -334,6 +373,11 @@ inherente a la forma en que funciona un filtro de DNS.</p>
   <li><strong>Inicio tras reinicio:</strong> volver a levantar el filtro.</li>
   <li><strong>Exclusión de la optimización de batería:</strong> evitar que el sistema cierre el
   filtro.</li>
+  <li><strong>Servicio de accesibilidad (opcional, «guardia de Ajustes»):</strong> recibir avisos de
+  cambio de ventana de los Ajustes de Android, del gestor de aplicaciones de MIUI/Xiaomi, del
+  instalador de paquetes y de los lanzadores, para devolver «atrás» las pantallas que desactivan la
+  protección de esta aplicación. Solo comprueba en memoria si la pantalla menciona esta app; no lee
+  ni guarda el contenido de otras aplicaciones. Se explica en el apartado 6.</li>
 </ul>
 
 <h2>11. Cómo funciona el filtro y hasta dónde llega</h2>
@@ -406,6 +450,7 @@ través del correo indicado.</p>
 
 <div class="ficha">
 <p><strong>Effective from:</strong> 16 October 2026</p>
+<p><strong>Updated:</strong> 25 October 2026 — the optional accessibility service ("Settings guard") is now declared.</p>
 <p><strong>Controller:</strong> scojiro_dev (independent developer)</p>
 <p><strong>Privacy contact:</strong> <a href="mailto:scojiro+cleanphone@gmail.com">scojiro+cleanphone@gmail.com</a></p>
 </div>
@@ -418,7 +463,7 @@ través del correo indicado.</p>
 <li>What the app stores <strong>stays on the phone</strong> and is deleted when you uninstall it.</li>
 <li><strong>Which pages were opened is never stored</strong>: only how many blocks happened and why.</li>
 <li>There is an <strong>optional recovery code</strong> to get back in if you lose your PIN. It is shown once.</li>
-<li><strong>Advanced device protection</strong> is optional and for users with technical knowledge: it requires preparing the phone from scratch, and <strong>does not filter more</strong>.</li>
+<li><strong>Advanced device protection</strong> is optional and for users with technical knowledge: it requires preparing the phone from scratch, and <strong>does not filter more</strong>. It has two optional layers: the device administrator role and a <strong>Settings guard</strong> based on accessibility that only acts on system screens that affect this app.</li>
 </ul>
 </div>
 
@@ -604,6 +649,43 @@ no policy as applied or removed. The same applies when applying or removing: the
 protects access inside the app; under no circumstances does it prevent removing the app or changing
 Android settings.</p>
 
+<h3>The Settings guard (accessibility service, optional)</h3>
+<p>The second optional layer of this protection is an Android <strong>accessibility service</strong>,
+which the app calls the "Settings guard". It is switched on <strong>separately</strong>, with its own
+notice, from the phone's accessibility settings, and it can be switched off from the app with the
+guardian's PIN.</p>
+
+<h4>What it receives</h4>
+<p>Only <strong>window change notifications</strong> (which screen comes to the foreground) and
+<strong>only from a closed list of system apps</strong>: Android Settings, the MIUI/Xiaomi app
+manager, the package installer and known launchers. The system <strong>does not deliver events from
+any other app</strong>.</p>
+
+<h4>What it reads</h4>
+<p>On those screens it only checks <strong>in memory</strong> whether they mention the
+<code>com.cleanphone.guardian</code> package or the name "Cleanphone Guardian". It <strong>does not
+read, store or send</strong> other apps' content: there is no text log, no screenshots and no
+history of what is on screen.</p>
+
+<h4>What it does</h4>
+<p>When one of those screens <strong>affects this app</strong> — uninstalling it, force-stopping it,
+clearing its data, deactivating its administrator, deactivating the service itself or removing the
+VPN — the service performs the "back" action to return the user to the previous screen. That is what
+stops protection from being turned off without the guardian's PIN on those specific routes.</p>
+
+<h4>When it does nothing</h4>
+<p>The entry for <strong>another</strong> app in those same settings is <strong>left alone</strong>:
+the check fails because the screen does not mention Cleanphone, and the service does nothing. It
+does not act on any screen outside that list either.</p>
+
+<h4>Limits</h4>
+<p>It is not foolproof: safe mode, factory reset, USB debugging from a computer and another device
+user can bypass it. On its own it does not prevent uninstalling the app and it does not replace the
+device administrator role. If it detects a loop of closures it <strong>disables itself</strong>
+(fail-safe mode) so as not to leave the phone unusable, and the app reports it.</p>
+<p>On Google Play, the use of this accessibility service is declared on the app's store listing and
+in the corresponding declaration form.</p>
+
 <h2>7. Backups and moving to another phone</h2>
 <p>The app declares system backups <strong>disabled</strong> and, on more recent systems, also
 defines <strong>explicit exclusion rules</strong> that leave both cloud backup and <strong>transfer
@@ -644,6 +726,11 @@ inherent to how DNS filtering works.</p>
   <li><strong>Start on boot:</strong> bringing the filter back up.</li>
   <li><strong>Battery optimisation exemption:</strong> stopping the system from killing the
   filter.</li>
+  <li><strong>Accessibility service (optional, "Settings guard"):</strong> receiving window change
+  notifications from Android Settings, the MIUI/Xiaomi app manager, the package installer and
+  launchers, in order to send "back" the screens that turn this app's protection off. It only checks
+  in memory whether the screen mentions this app; it does not read or store other apps' content. It
+  is explained in section 6.</li>
 </ul>
 
 <h2>11. How the filter works and how far it reaches</h2>
